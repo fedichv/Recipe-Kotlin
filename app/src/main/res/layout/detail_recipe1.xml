@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/detail_recipe">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="35dp">
+
+        <EditText
+            android:id="@+id/et_dish_name"
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:hint="Название блюда"
+            android:background="@drawable/edit_text_round"/>
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:hint="Описание"
+            android:background="@drawable/edit_text_round"/>
+
+        <EditText
+            android:id="@+id/et_ingredients"
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:hint="Список ингредиентов через ;"
+            android:background="@drawable/edit_text_round"/>
+
+        <EditText
+            android:id="@+id/et_steps"
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="3dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:hint="Список шагов"
+            android:background="@drawable/edit_text_round"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="327dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:text="Добавить"
+            android:background="@drawable/button_round"/>
+
+    </LinearLayout>
+
+</FrameLayout>
