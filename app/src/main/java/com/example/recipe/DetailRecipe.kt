@@ -23,6 +23,7 @@ class DetailRecipe: AppCompatActivity() {
             val description = et_description.text.toString()
             val ingredient = et_ingredients.text.toString()
             val steps = et_steps.text.toString()
+            val backgroundImage = findViewById<EditText>(R.id.backgroundImg).text.toString()
 
 
             val intent = Intent(this, MainActivity::class.java)
@@ -31,6 +32,7 @@ class DetailRecipe: AppCompatActivity() {
             intent.putExtra("DESCRIPTION", description)
             intent.putExtra("ING", ingredient)
             intent.putExtra("STEPS", steps)
+            intent.putExtra("BACKGROUND_IMAGE_URL", backgroundImage)
 
             startActivity(intent)
         }

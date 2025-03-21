@@ -1,9 +1,11 @@
 package com.example.recipe
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +17,14 @@ class MainActivity : AppCompatActivity() {
         val description = intent.getStringExtra("DESCRIPTION") ?: "0"
         val ing = intent.getStringExtra("ING") ?: "0"
         val steps = intent.getStringExtra("STEPS") ?: "0"
+        val backgroundImageUrl = intent.getStringExtra("BACKGROUND_IMAGE_URL") ?: "0"
+
+        val backgroundImageView = findViewById<ImageView>(R.id.main_image)
+        if (backgroundImageUrl.isNotEmpty()) {
+            Picasso.get()
+                .load(backgroundImageUrl)
+                .into(backgroundImageView)
+        }
 
         var stepCount = 0
 
