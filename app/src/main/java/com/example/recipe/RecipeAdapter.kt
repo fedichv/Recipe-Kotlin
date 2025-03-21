@@ -1,8 +1,10 @@
 package com.example.recipe
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class RecipeAdapter(val items: Array<RecipeItemModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -30,21 +32,37 @@ class RecipeAdapter(val items: Array<RecipeItemModel>): RecyclerView.Adapter<Rec
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
-        if (item is DishItemModel && holder is RecipeInfo) {
-            holder.dish.text = item.dish
-            holder.cookingTime.text = item.cookingTime
-            holder.photoProfile.setImageResource(item.photoProfile)
-            holder.nameUser.text = item.nameUser
-            holder.numberOfLikes.text = item.numberOfLikes
-            holder.description.text = item.description
-        } else if (item is HeaderViewModel && holder is HeaderView) {
-            holder.ingredientsAndSteps.text = item.ingredientsAndSteps
-        } else if (item is IngredientsUsedItemModel && holder is IngredientsUsed) {
-            holder.ingredients.text = item.ingredients
-        } else if (item is StepsItemModel && holder is Steps) {
-            holder.stepNum.text = item.stepNum
-            holder.stepDescription.text = item.stepDescription
-            holder.stepImage.setImageResource(item.stepImage)
+        when {
+            item is DishItemModel && holder is RecipeInfo -> {
+                holder.dish.text = item.dish
+                holder.cookingTime.text = item.cookingTime
+                Picasso.get()
+                    .load(item.photoProfile)
+                    .fit()
+                    .centerInside()
+                    .into(holder.photoProfile)
+                holder.nameUser.text = item.nameUser
+                holder.numberOfLikes.text = item.numberOfLikes
+                holder.description.text = item.description
+            }
+            item is HeaderViewModel && holder is HeaderView -> {
+                holder.ingredientsAndSteps.text = item.ingredientsAndSteps
+            }
+            item is IngredientsUsedItemModel && holder is IngredientsUsed -> {
+                holder.ingredients.text = item.ingredients
+            }
+            item is StepsItemModel && holder is Steps -> {
+                holder.stepNum.text = item.stepNum
+                holder.stepDescription.text = item.stepDescription
+
+                Log.d("RecipeAdapter", "Loading image URL: ${item.stepImage}")
+
+                Picasso.get()
+                    .load(item.stepImage)
+                    .resize(1024,1024)
+                    .centerCrop()
+                    .into(holder.stepImage)
+            }
         }
     }
 

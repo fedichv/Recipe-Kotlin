@@ -22,5 +22,5 @@ class IngredientsUsedItemModel(
 class StepsItemModel(
     val stepNum: String,
     val stepDescription: String,
-    val stepImage: Int
+    val stepImage: String
 ) : RecipeItemModel()
